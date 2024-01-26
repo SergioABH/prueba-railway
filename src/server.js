@@ -14,7 +14,7 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:${PORT}/",
+                url: "https://backend2-mern.onrender.com/",
             },
         ],
     },
