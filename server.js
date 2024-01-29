@@ -36,6 +36,7 @@ app.use(cors({
     origin: [
       FRONTEND_URL,
       'https://backend2-mern.onrender.com/app-docs/',
+      'https://frontend-mern-8ysy.onrender.com'
     ],
   }));
 app.use(express.json());
