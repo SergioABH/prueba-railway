@@ -3,6 +3,7 @@ const cors = require("cors");
 const swaggerUI = require("swagger-ui-express");
 const swaggerJsDoc = require("swagger-jsdoc");
 const clienteRoutes = require("./routes/clienteRoutes");
+const { FRONTEND_URL } = require('./config.js');
 const { PORT } = require('./config.js');
 
 const options = {
@@ -14,7 +15,7 @@ const options = {
         },
         servers: [
             {
-                url: "http://localhost:8080/",
+                url: PORT,
             },
         ],
     },
@@ -25,10 +26,12 @@ const swaggerSpec = swaggerJsDoc(options);
 
 const app = express();
 app.use("/app-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
-app.use(cors());
+
+app.use(cors({
+    origin: FRONTEND_URL
+}));
 app.use(express.json());
 
-// Rutas relacionadas con clientes
 app.use("/", clienteRoutes);
 
 app.listen(PORT)
