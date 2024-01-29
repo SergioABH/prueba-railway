@@ -15,8 +15,13 @@ const options = {
         },
         servers: [
             {
-                url: PORT,
+                url: "http://localhost:8080/",
+                description: "Entorno de desarrollo",
             },
+            {
+                url: "https://backend2-mern.onrender.com/",
+                description: "Entorno de producción",
+              },
         ],
     },
     apis: ["./routes/clienteRoutes.js"],

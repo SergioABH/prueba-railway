@@ -1,6 +1,5 @@
 const db = require("../models/db");
 
-// Métodos para gestionar las operaciones de la base de datos relacionadas con clientes
 const clienteController = {
     createCliente: (req, res) => {
         const { nombre, apellido, correo } = req.body;
