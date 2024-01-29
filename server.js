@@ -33,8 +33,11 @@ const app = express();
 app.use("/app-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
 app.use(cors({
-    origin: FRONTEND_URL
-}));
+    origin: [
+      FRONTEND_URL,
+      'https://backend2-mern.onrender.com/app-docs/',
+    ],
+  }));
 app.use(express.json());
 
 app.use("/", clienteRoutes);
