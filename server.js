@@ -32,13 +32,7 @@ const swaggerSpec = swaggerJsDoc(options);
 const app = express();
 app.use("/app-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
-app.use(cors({
-    origin: [
-      FRONTEND_URL,
-      'https://backend2-mern.onrender.com/app-docs/',
-      'https://frontend-mern-8ysy.onrender.com'
-    ],
-  }));
+app.use(cors());
 app.use(express.json());
 
 app.use("/", clienteRoutes);
