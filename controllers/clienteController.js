@@ -5,8 +5,7 @@ const clienteController = {
         const { nombre, apellido, correo } = req.body;
 
         db.query(
-            'INSERT INTO clientes(nombre, apellido, correo) VALUES (?, ?, ?)',
-            [nombre, apellido, correo],
+            'INSERT INTO clientes(nombre, apellido, correo) VALUES ($1, $2, $3)', [nombre, apellido, correo],
             (err, result) => {
                 if (err) {
                     console.log(err);
