@@ -30,7 +30,8 @@ const clienteController = {
     },
 
     updateCliente: (req, res) => {
-        const { id, nombre, apellido, correo } = req.body;
+        const { id } = req.params;
+        const { nombre, apellido, correo } = req.body;
 
         db.query(
             'UPDATE clientes SET nombre=?, apellido=?, correo=? WHERE id=?',
