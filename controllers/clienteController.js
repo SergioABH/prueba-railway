@@ -24,7 +24,7 @@ const clienteController = {
                 console.log(err);
                 res.status(500).json({ error: "Error al obtener la lista de clientes" });
             } else {
-                res.status(200).json(result);
+                res.status(200).json(result.rows);
             }
         });
     },
