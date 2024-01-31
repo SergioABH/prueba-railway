@@ -47,15 +47,17 @@ const clienteController = {
     deleteCliente: (req, res) => {
         const id = req.params.id;
 
-        db.query('DELETE FROM clientes WHERE id=$1', id, (err, result) => {
-            if (err) {
-                console.log(err);
-                res.status(500).json({ error: "Error al eliminar el cliente" });
-            } else {
-                res.status(200).json({ message: "Cliente eliminado exitosamente", result });
-            }
-        });
-    },
-};
+        db.query(
+            'DELETE FROM clientes WHERE id=$1', [id], 
+            (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).json({ error: "Error al eliminar el cliente" });
+                } else {
+                    res.status(200).json({ message: "Cliente eliminado exitosamente", result });
+                }
+            });
+        },
+    };
 
 module.exports = clienteController;
