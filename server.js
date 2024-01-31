@@ -32,7 +32,9 @@ const swaggerSpec = swaggerJsDoc(options);
 const app = express();
 app.use("/app-docs", swaggerUI.serve, swaggerUI.setup(swaggerSpec));
 
-app.use(cors());
+app.use(cors({
+    origin: FRONTEND_URL
+}));
 app.use(express.json());
 
 app.use("/", clienteRoutes);
