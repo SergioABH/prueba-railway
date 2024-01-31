@@ -32,8 +32,7 @@ const clienteController = {
         const { id, nombre, apellido, correo } = req.body;
 
         db.query(
-            'UPDATE clientes SET nombre=?, apellido=?, correo=? WHERE id=?',
-            [nombre, apellido, correo, id],
+            'UPDATE clientes SET nombre=$1, apellido=$2, correo=$3 WHERE id=$4', [nombre, apellido, correo, id],
             (err, result) => {
                 if (err) {
                     console.log(err);
@@ -48,7 +47,7 @@ const clienteController = {
     deleteCliente: (req, res) => {
         const id = req.params.id;
 
-        db.query('DELETE FROM clientes WHERE id=?', id, (err, result) => {
+        db.query('DELETE FROM clientes WHERE id=$1', id, (err, result) => {
             if (err) {
                 console.log(err);
                 res.status(500).json({ error: "Error al eliminar el cliente" });
